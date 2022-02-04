@@ -172,10 +172,10 @@ const data = {
 
                             → arr.sort()
                             `,
-    "for loop": `→ for(condition) {
+    "for loop": `→ for(condition - variable; measure; counter) {
                 statement}
                 
-                → for(condition) {
+                → for(condition - variable; measure; counter) {
                     statement
                      for(condition) {
                         statement

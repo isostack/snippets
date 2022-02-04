@@ -16,21 +16,34 @@
 
 <body>
     <div id="container">
-        <aside>
-            <header>
-                <input type="search" id="search" placeholder="search">
-            </header>
-            <img class="animation" src="./images/bot.gif" alt="">
-        </aside>
-        <main >
-            <!--React component renders here-->
-            <div id="info"></div>
-            <div ><ul id="chat"></ul></div>
-        </main>
+            <aside>
+              <header id="shore">
+              </header>
+              <img class="animation" src="./images/bot.gif" alt="" />
+            </aside>
+    
+            <main >
+              <div id="info">
+                <header>
+                  <img src="./images/ai.jpg" alt="" />
+                  <div>
+                    <h2>The Kori Search</h2>
+                    <h3>With over 192 keywords</h3>
+                  </div>
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png" alt="" />
+                </header>
+              </div>
+              <div >
+                <ul id="chat">
+                  <li className="you">
+                    <div className="message">Please type Search Query!</div>
+                  </li>
+                </ul>
+              </div>
+            </main>
     </div>
-    <script type="text/babel" src="./js/main.js"></script>
     <script type="text/babel" src="./js/data.js"></script>
-    <script type="text/babel" src="reactor.js"></script>
+    <script type="text/babel" src="./js/reactor.js"></script>
 </body>
 
 </html>
