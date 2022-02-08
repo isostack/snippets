@@ -1,26 +1,7 @@
 
 /* ***********************************
- M O D U L E 1 S T A R T 
+ C O M P O N E N T S 
 *********************************** */
-
-class Input extends React.Component {
-  constructor(props){
-    super(props)
-    this.state= {
-      input : ''
-    }
-    this.handleType = this.handleType.bind(this)
-  }
-  handleType(event){  
-     search_term = event.target.value
-     searchFilter();
-  }
-  render(){
-    return (
-      <input  onChange={this.handleType} id="search" placeholder="search" />
-    )
-  }
-}
 class Alpha extends React.Component {
   constructor(props){
     super(props)
@@ -29,14 +10,31 @@ class Alpha extends React.Component {
     return 
   }
 }
-ReactDOM.render(<Input /> , document.getElementById("shore"))
 
-//ReactDOM.render(<Inform /> , document.getElementById("chat"))
+class Input extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  onKeyUp(event) {
+    search_term = '';
+    if (event.charCode === 13) {
+      search_term = event.target.value
+      searchFilter()
+    }
+  }
+  render(){
+    return (
+      <input  className="form-control searcher" onKeyPress={this.onKeyUp} id="search" placeholder="search" />
+    )
+  }
+}
+
+
+ReactDOM.render(<Input /> , document.getElementById("search"))
 
 /* ***********************************
- M O D U L E 2 
+R E A C T O R S 
 *********************************** */
-var kori_search = document.getElementById('search');
 var search_term = "";
 var data_result;
 
@@ -49,32 +47,63 @@ const searchFilter = () => {
 }
 
 const flexSearch = (val) => {
+  clear()
   for (const key in data) {
       if (key.includes(val)) {
           data_result = data[key];
-          render();
-      }
+          renderFire();
+          return 0;
+      } 
   }
-
+   renderWater()
 }
 /* ***********************************
-M O D U L E 3 RENDERERS
+R E N D E R E R S 
 *********************************** */
-const Render = function (props) {
+const Red = function (props) {
   return (
- <li className="you">
-  <div className="message">{props.result}</div> 
-  </li>  
+    <div style={{backgroundColor: "red", color: "white"}} className="indicator">     
+        Please check if there is a typo in <strong>"{search_term}"</strong> | | Or search the web for the term
+    </div>
    );
  }
- 
+ const Green = function (props) {
+  return (
+    <div style={{backgroundColor: "green", color: "white"}} className="indicator">     
+        Query available!!!
+    </div>
+   );
+ }
+
+ class Render extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  componentWillMount(){
+  ReactDOM.render(<Green  /> , document.getElementById('indicator'))   
+  }
+  render(){
+    const items = data_result.map(function (x) {
+    return (
+      <div id="pad" className="card">
+      <div className="card-body">{x}</div> 
+      </div>
+    )
+  })
+        return(
+          items
+        )
+  }
+}
+
 const clear = () => {
-  ReactDOM.unmountComponentAtNode(document.getElementById('chat'))
+  ReactDOM.unmountComponentAtNode(document.getElementById('output'))
 }
 
-const render = () =>{ // Creating element maker variables
-  clear(Input)
-  ReactDOM.render(<Render result = {data_result} /> , document.getElementById('chat'))   
+const renderFire = () =>{ // Creating element maker variables
+  ReactDOM.render(<Render result = {data_result} /> , document.getElementById('output'))   
 }
 
-
+const renderWater = () => {
+  ReactDOM.render(<Red  /> , document.getElementById('indicator'))   
+}
