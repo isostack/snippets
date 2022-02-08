@@ -4,7 +4,7 @@
 }
 @font-face {
 	font-family: synergy; 
-	src: url('./css/VPPixel-Simplified.otf');
+	src: url('VPPixel-Simplified.otf');
   }
 body {
   font-family: 'Poppins', sans-serif;
