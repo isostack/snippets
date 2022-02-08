@@ -13,7 +13,7 @@
  **     **          **      **          **      **
     ***                ***                 ***
 *******************************************************
-Javascript Syntax Search.
+Javascript snippet Syntax Search.
 *******************************************************
 
 Pending developments
@@ -23,5 +23,5 @@ Pending developments
 
         Jquery syntax
 
-Krell 2021 All Rights Reserved .
+Synergy 2021 All Rights Reserved .
             
